@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/temas")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TemaController {
     @Autowired
     private TemasRepository temasRepository;
