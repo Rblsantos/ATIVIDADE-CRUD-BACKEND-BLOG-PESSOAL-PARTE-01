@@ -1,5 +1,6 @@
 package com.example.atividade_crud_backend_blog_pessoal.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -7,10 +8,23 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_postagens")
 public class Postagem {
+
+    public Tema getTema() {
+        return tema;
+    }
+
+    public void setTema(Tema tema) {
+        this.tema = tema;
+    }
+
+    @ManyToOne
+    @JsonIgnoreProperties ("postagem")
+    private Tema tema ;
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
